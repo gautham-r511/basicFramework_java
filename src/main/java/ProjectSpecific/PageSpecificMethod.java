@@ -9,18 +9,19 @@ import org.testng.annotations.DataProvider;
 import BaseWorks.BasicOperations;
 import utils.DataLibrary;
 
-public class PageSpecificMethod extends BasicOperations{
-	
-	public String dataSheetName;		
+public class PageSpecificMethod extends BasicOperations {
+
+	public String dataSheetName;
 
 	@DataProvider(name = "fetchData")
 	public Object[][] fetchData() throws IOException {
 		return DataLibrary.readExcelData(dataSheetName);
-	}	
-	
+	}
+
 	@BeforeMethod
 	public void beforeMethod() {
 		driver = browser("chrome", "http://leaftaps.com/opentaps");
+		node = test.createNode(testCaseName);
 	}
 
 	@AfterMethod
